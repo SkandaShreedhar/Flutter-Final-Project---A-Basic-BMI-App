@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:myfirstapp/SecondPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -159,9 +160,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     setState(() {
                       result = weight / (height*height/10000);
                     });
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) =>
+                        SecondPage(result : result,)));
+
+
           },
                   child: Text(
-                      'CALCULATE',
+                      'Calculate',
                     style: TextStyle(
                       fontStyle: FontStyle.normal,
                       fontWeight: FontWeight.w400,
@@ -177,24 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          Container(
-            height: 80,
-            width: 490,
-            color: Colors.white24,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("BMI : ${(result.round())}",
-                  style: TextStyle(
-                    fontSize: 45,
-                    fontWeight: FontWeight.w500,
-                    fontStyle: FontStyle.normal,
-                  ),
-                )
-              ],
-            ),
-          )
-          ],
+         ],
         )
       );
    }
